@@ -1,4 +1,6 @@
-package app.ccb.domain.dtos;
+package app.ccb.domain.dtos.xml.wrapper;
+
+import app.ccb.domain.dtos.xml.CardDto;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -8,19 +10,18 @@ import java.util.List;
 
 @XmlRootElement(name = "cards")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class CardRootImportDto {
+public class CardDtoWrapper {
+
 
     @XmlElement(name = "card")
-    private List<CardImportDto> cards;
+    private List<CardDto> cards;
 
-    public CardRootImportDto() {
+
+    public List<CardDto> getCards() {
+        return cards;
     }
 
-    public List<CardImportDto> getCards() {
-        return this.cards;
-    }
-
-    public void setCards(List<CardImportDto> cards) {
+    public void setCards(List<CardDto> cards) {
         this.cards = cards;
     }
 }

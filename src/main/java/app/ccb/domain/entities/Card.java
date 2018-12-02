@@ -1,43 +1,37 @@
 package app.ccb.domain.entities;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-@Entity
-@Table(name = "cards")
-public class Card extends BaseEntity{
+@Entity(name = "cards")
+public class Card extends BaseEntity {
 
     private String cardNumber;
     private String cardStatus;
     private BankAccount bankAccount;
 
-    public Card() {
-    }
-
-    @Column(name = "card_number", nullable = false)
-    @NotNull
+    @Column(name = "card_number",nullable = false)
     public String getCardNumber() {
-        return this.cardNumber;
+        return cardNumber;
     }
 
     public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }
-
-    @Column(name = "card_status", nullable = false)
-    @NotNull
+    @Column(name = "card_status",nullable = false)
     public String getCardStatus() {
-        return this.cardStatus;
+        return cardStatus;
     }
 
     public void setCardStatus(String cardStatus) {
         this.cardStatus = cardStatus;
     }
-
-    @ManyToOne(targetEntity = BankAccount.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "bank_account")
+    @ManyToOne(targetEntity = BankAccount.class)
+    @JoinColumn(name = "bank_account",referencedColumnName = "id")
     public BankAccount getBankAccount() {
-        return this.bankAccount;
+        return bankAccount;
     }
 
     public void setBankAccount(BankAccount bankAccount) {

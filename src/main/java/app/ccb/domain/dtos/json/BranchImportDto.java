@@ -1,18 +1,17 @@
-package app.ccb.domain.dtos;
+package app.ccb.domain.dtos.json;
 
 import com.google.gson.annotations.Expose;
 
-import java.io.Serializable;
+import javax.validation.constraints.NotNull;
 
-public class BranchImportDto implements Serializable {
+public class BranchImportDto {
+
     @Expose
     private String name;
 
-    public BranchImportDto() {
-    }
-
+    @NotNull(message = "There is no name")
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {

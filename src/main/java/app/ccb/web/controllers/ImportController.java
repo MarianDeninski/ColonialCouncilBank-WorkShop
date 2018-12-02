@@ -96,7 +96,7 @@ public class ImportController extends BaseController {
     }
 
     @GetMapping("/bank-accounts")
-    public ModelAndView importBankAccounts() throws IOException {
+    public ModelAndView importBankAccounts() throws IOException, JAXBException {
         String bankAccountXmlFile = this.bankAccountService.readBankAccountsXmlFile();
         return super.view("xml/import-bank-accounts", "bankAccounts", bankAccountXmlFile);
     }

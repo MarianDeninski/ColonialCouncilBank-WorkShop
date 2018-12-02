@@ -2,25 +2,24 @@ package app.ccb.domain.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import java.util.List;
 
-@Entity
-@Table(name = "branches")
+@Entity(name = "branches")
 public class Branch extends BaseEntity {
 
     private String name;
+    private List<Employee> employees;
 
-    public Branch() {
-    }
 
-    @Column(name = "name", nullable = false)
-    @NotNull
+
+    @Column(name = "name",nullable = false)
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
+
+
 }

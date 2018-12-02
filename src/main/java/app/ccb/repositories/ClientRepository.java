@@ -9,17 +9,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ClientRepository extends JpaRepository<Client, Integer> {
+public interface ClientRepository extends JpaRepository<Client,Integer> {
+
 
     Optional<Client> findByFullName(String fullName);
 
-    @Query(
-            "SELECT c " +
-            "FROM app.ccb.domain.entities.Client c " +
-            "JOIN c.bankAccount b " +
-            "JOIN b.cards ca " +
-            "GROUP BY c.id " +
-            "ORDER BY size(b.cards) DESC, c.id"
-    )
-    List<Client> getFamilyGuy();
+    @Query("SELECT c FROM app.ccb.domain.entities.Client c  order by size(c.bankAccount.cards) DESC ")
+    List<Client> getallClients();
 }

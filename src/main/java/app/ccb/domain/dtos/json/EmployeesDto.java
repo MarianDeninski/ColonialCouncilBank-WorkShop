@@ -1,12 +1,14 @@
-package app.ccb.domain.dtos;
+package app.ccb.domain.dtos.json;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
+import javax.persistence.Column;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
-public class EmployeeImportDto implements Serializable {
+public class EmployeesDto {
 
     @Expose
     @SerializedName("full_name")
@@ -23,11 +25,9 @@ public class EmployeeImportDto implements Serializable {
     @SerializedName("branch_name")
     private String branchName;
 
-    public EmployeeImportDto() {
-    }
-
+    @NotNull(message = "Incorrect data")
     public String getFullName() {
-        return this.fullName;
+        return fullName;
     }
 
     public void setFullName(String fullName) {
@@ -35,7 +35,7 @@ public class EmployeeImportDto implements Serializable {
     }
 
     public BigDecimal getSalary() {
-        return this.salary;
+        return salary;
     }
 
     public void setSalary(BigDecimal salary) {
@@ -43,7 +43,7 @@ public class EmployeeImportDto implements Serializable {
     }
 
     public String getStartedOn() {
-        return this.startedOn;
+        return startedOn;
     }
 
     public void setStartedOn(String startedOn) {
@@ -51,7 +51,7 @@ public class EmployeeImportDto implements Serializable {
     }
 
     public String getBranchName() {
-        return this.branchName;
+        return branchName;
     }
 
     public void setBranchName(String branchName) {

@@ -1,28 +1,26 @@
-package app.ccb.domain.dtos;
+package app.ccb.domain.dtos.xml;
 
 
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.*;
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 @XmlRootElement(name = "bank-account")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class BankAccountImportDto implements Serializable {
+public class BankAccountDto {
+
 
     @XmlAttribute(name = "client")
     private String client;
-
     @XmlElement(name = "account-number")
+    @NotNull(message = "Incorrect data")
     private String accountNumber;
-
     @XmlElement(name = "balance")
     private BigDecimal balance;
 
-    public BankAccountImportDto() {
-    }
 
     public String getClient() {
-        return this.client;
+        return client;
     }
 
     public void setClient(String client) {
@@ -30,7 +28,7 @@ public class BankAccountImportDto implements Serializable {
     }
 
     public String getAccountNumber() {
-        return this.accountNumber;
+        return accountNumber;
     }
 
     public void setAccountNumber(String accountNumber) {
@@ -38,7 +36,7 @@ public class BankAccountImportDto implements Serializable {
     }
 
     public BigDecimal getBalance() {
-        return this.balance;
+        return balance;
     }
 
     public void setBalance(BigDecimal balance) {

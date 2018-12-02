@@ -1,56 +1,53 @@
-package app.ccb.domain.dtos;
+package app.ccb.domain.dtos.json;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
+import javax.validation.constraints.NotNull;
 
-public class ClientImportDto implements Serializable {
+public class ClientsDto {
 
     @Expose
     @SerializedName("first_name")
     private String firstName;
-
     @Expose
     @SerializedName("last_name")
     private String lastName;
-
     @Expose
-    private Integer age;
-
+    private int age;
     @Expose
     @SerializedName("appointed_employee")
     private String appointedEmployee;
 
-    public ClientImportDto() {
-    }
 
+    @NotNull(message = "Incorrect data")
     public String getFirstName() {
-        return this.firstName;
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    @NotNull(message = "Incorrect data")
     public String getLastName() {
-        return this.lastName;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public Integer getAge() {
-        return this.age;
+    public int getAge() {
+        return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
     public String getAppointedEmployee() {
-        return this.appointedEmployee;
+        return appointedEmployee;
     }
 
     public void setAppointedEmployee(String appointedEmployee) {
